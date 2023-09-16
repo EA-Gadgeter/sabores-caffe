@@ -1,0 +1,19 @@
+@use "./vars" as v;
+
+@mixin phoneQuerie {
+  @media screen and (width >= v.$phone) {
+    @content;
+  }
+}
+
+@mixin tabletQuerie {
+  @media screen and (width >= v.$tablet) {
+    @content;
+  }
+}
+
+@mixin desktopQuerie {
+  @media screen and (width >= v.$desktop) {
+    @content;
+  }
+}

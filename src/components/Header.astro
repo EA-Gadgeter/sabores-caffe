@@ -1,0 +1,166 @@
+---
+import { getImage } from "astro:assets";
+
+import homeHeaderBackground from "../assets/img/header_inicio.jpg"
+import homeContactBackground from "../assets/img/header_contacto.jpg";
+import homeGalleryBackground from "../assets/img/header_galeria.jpg";
+import homeMenuBackground from "../assets/img/header_menu.jpg";
+import homeAboutUsBackground from "../assets/img/header_nosotros.jpg";
+import homeProcessBackground from "../assets/img/header_proceso.jpg";
+
+interface Props {
+  headerImage: "home" | "contact" | "gallery" | "menu" | "aboutUs" | "process"
+}
+
+const { headerImage } = Astro.props;
+
+const headerImages = {
+  home: homeHeaderBackground,
+  contact: homeContactBackground,
+  gallery: homeGalleryBackground,
+  menu: homeMenuBackground,
+  aboutUs: homeAboutUsBackground,
+  process: homeProcessBackground
+}
+
+const headerImageOptimized = await getImage({ src: headerImages[headerImage], format: "webp", quality: "low" });
+const headerBackgroundImage = `url(${headerImageOptimized.src});`
+---
+
+<header>
+  <div class="container header-container">
+    <div class="bar">
+      <div class="logo">
+        <img 
+          src="/logo.svg"
+          alt="Sabores Caffe Logo" 
+        />
+      </div>
+
+      <nav class="nav">
+        <a href="/" class="active">Home</a>
+        <a href="about-us">About us</a>
+        <a href="/process">Process</a>
+        <a href="/menu">Menu</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="header-text">
+      <h1>Enjoy a magnificent cup of coffee</h1>
+    </div>
+  </div>
+</header>
+
+<style lang="scss" define:vars={{
+  headerBackgroundImage
+}}>
+  @use "../styles/vars" as v;
+  @use "../styles/mixins" as m;
+
+  header {
+    position: relative;
+
+    padding: 5rem 0;
+
+    background-image: var(--headerBackgroundImage);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include m.tabletQuerie {
+      min-height: 70rem;
+    }
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      background-color: v.$black;
+      opacity: 0.6;
+    }
+  }
+
+  .header-container {
+    position: relative;
+
+    h1 {
+      margin-top: 5rem;
+
+      text-align: center;
+      color: v.$white;
+      text-transform: uppercase;
+
+      @include m.tabletQuerie {
+        margin-top: 10rem;
+      }
+    }
+  }
+
+  .bar {
+    display: flex;
+    flex-direction: column;
+
+    @include m.tabletQuerie {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 50%;
+      margin: 0 auto;
+
+
+      @include m.tabletQuerie {
+        width: 20rem;
+
+        margin: 0;
+      }
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      margin-top: 5rem;
+
+      @include m.tabletQuerie {
+        flex-direction: row;
+
+        margin-top: 0;
+      }
+
+      a {
+        margin-bottom: 1rem;
+
+        font-size: 1.75rem;
+        font-weight: 700;
+
+        text-align: center;
+        text-decoration: none;
+        color: v.$white;
+        text-transform: uppercase;
+
+        @include m.tabletQuerie {
+          margin-bottom: 0;
+        }
+
+        &.active {
+          color: v.$secondary;
+        }
+
+        &:hover {
+          color: v.$secondary;
+        }
+      }
+    }
+  }
+</style>
