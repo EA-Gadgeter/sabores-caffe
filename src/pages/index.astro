@@ -1,9 +1,300 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
 
-import Header from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro";
+
+import Header from "../components/Header.astro";
+
+import gallery1 from "../assets/img/galeria/galeria_01.jpg";
+import gallery2 from "../assets/img/galeria/galeria_02.jpg";
+import gallery3 from "../assets/img/galeria/galeria_03.jpg";
+import gallery4 from "../assets/img/galeria/galeria_04.jpg";
+import gallery5 from "../assets/img/galeria/galeria_05.jpg";
+import gallery6 from "../assets/img/galeria/galeria_06.jpg";
+import gallery7 from "../assets/img/galeria/galeria_07.jpg";
+import gallery8 from "../assets/img/galeria/galeria_08.jpg";
+import gallery9 from "../assets/img/galeria/galeria_09.jpg";
+import gallery10 from "../assets/img/galeria/galeria_10.jpg";
 ---
 
 <Layout title="Sabores Caffe">
-    <Header headerImage="home"/>
+  <Header headerImage="home" />
+
+  <main class="container text-center">
+    <section class="know">
+      <div class="title-header">
+          <h2>
+              <span>Know more</span>
+              About Us
+          </h2>
+
+          <img src="/cafe.svg" alt="Coffee Grain Icon">
+      </div>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente blanditiis labore illo est amet iusto repudiandae consequuntur autem incidunt quas nam maxime, earum optio animi, iste quos adipisci perferendis sequi!
+  
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione laborum aperiam necessitatibus omnis quia ducimus illo nihil assumenda, asperiores excepturi repellat impedit nobis architecto dolor quas beatae minima. Esse, quam!
+      </p>
+    </section>
+
+    <section class="icons">
+      <ul>
+        <li>
+          <img src="/icono_cafe.svg" alt="Coffee Cup">
+          <p>Coffee</p>
+        </li>
+
+        <li>
+          <img src="/icono_postre.svg" alt="Sweet Bread">
+          <p>Desserts</p>
+        </li>
+
+        <li>
+          <img src="/icono_te.svg" alt="Tea Cup">
+          <p>Tea</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="experience">
+        <div class="title-header">
+            <h2>
+                <span>Live the</span>
+                Experience
+            </h2>
+
+            <img src="/cafe.svg" alt="Coffee Grain Icon">
+        </div>
+
+        <div class="gallery">
+            <div class="image">
+                <Image
+                        src={gallery1}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery2}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery3}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery4}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery5}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery6}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery7}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery8}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery9}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+
+            <div class="image">
+                <Image
+                        src={gallery10}
+                        alt="Coffe cup been served"
+                        format="webp"
+                        quality="low"
+                />
+            </div>
+        </div>
+    </section>
+  </main>
 </Layout>
+
+<style lang="scss">
+  @use "../styles/vars" as v;
+  @use "../styles/mixins" as m;
+
+  main {
+    width: 100%;
+
+    background-color: v.$white;
+
+    padding: 5rem 2rem;
+
+    @include m.tabletQuerie {
+      width: fit-content;
+
+      position: relative;
+
+      margin-top: -10rem;
+      padding: 10rem;
+    }
+  }
+
+  .title-header {
+    h2 {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 10rem;
+      height: 10rem;
+
+      margin: 0 auto 5rem;
+    }
+  }
+
+  .icons {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    ul {
+      @include m.tabletQuerie {
+        margin-bottom: 10rem;
+
+        @include m.responsiveGrid(3, 2rem);
+      }
+
+      li {
+        img {
+          width: 12rem;
+
+          margin: 0 auto;
+        }
+        
+        p {
+          font-family: v.$cursiveFont;
+          font-size: 3.2rem;
+
+          color: v.$primary;
+        }
+      }
+    }
+  }
+
+  .gallery {
+    @include m.responsiveGrid(2, 2rem);
+
+    @include m.desktopQuerie {
+      @include m.responsiveGrid(4, 2rem);
+    }
+
+    .image {
+      height: 25rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+      }
+
+      @include m.desktopQuerie {
+        height: auto;
+
+        &:nth-child(1) {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
+        }
+
+        &:nth-child(2) {
+          grid-column: 2 / 4;
+          grid-row: 1 / 2;
+        }
+
+        &:nth-child(3) {
+          grid-column: 4 / 5;
+          grid-row: 1 / 2;
+        }
+
+        &:nth-child(4) {
+          grid-row: 2 / 4;
+          grid-column: 2 / 3;
+        }
+
+        &:nth-child(5) {
+          grid-row: 2 / 3;
+          grid-column: 3 / 5;
+        }
+
+        &:nth-child(6) {
+          grid-row: 3 / 4;
+          grid-column: 3 / 5;
+        }
+
+        &:nth-child(7) {
+          grid-column: 1 / 2;
+          grid-row: 3 / 5;
+        }
+
+        &:nth-child(8) {
+          grid-column: 2 / 5;
+          grid-row: 4 / 5;
+        }
+
+        &:nth-child(9) {
+          grid-column: 1 / 3;
+          grid-row: 5 / 6;
+        }
+
+        &:nth-child(10) {
+          grid-column: 3 / 5;
+          grid-row: 5 / 6;
+        }
+      }
+    }
+  }
+</style>

@@ -10,16 +10,19 @@ html {
 }
 
 body {
-  font-family: v.$primaryFont;
+  font-family: v.$secondaryFont;
   font-size: 1.6rem;
+
+  background-color: v.$lightBrown;
 }
 
 p {
   color: v.$black;
+  font-size: 1.6rem;
+  line-height: 2;
 }
 
 .container {
-  width: 95%;
   max-width: 120rem;
 
   margin: 0 auto;
@@ -34,6 +37,11 @@ img {
 
 h1, h2, h3 {
   margin: 0 0 v.$separation 0;
+
+  font-family: v.$primaryFont;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 h1 {
@@ -42,8 +50,23 @@ h1 {
 
 h2 {
   font-size: 3.2rem;
+  color: v.$primary;
+
+  span {
+    display: block;
+
+    font-size: 1.6rem;
+    color: v.$secondary;
+  }
 }
 
 h3 {
   font-size: 2.8rem;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
 }
